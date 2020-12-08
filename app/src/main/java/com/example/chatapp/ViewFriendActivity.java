@@ -203,7 +203,7 @@ public class ViewFriendActivity extends AppCompatActivity {
         {
             HashMap hashmap = new HashMap();
             hashmap.put("status","pending");
-            requestRef.child(mUser.getUid()).child(userID).updateChildren(hashmap).addOnCompleteListener(new OnCompleteListener() {
+            requestRef.child(userID).child(mUser.getUid()).updateChildren(hashmap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){

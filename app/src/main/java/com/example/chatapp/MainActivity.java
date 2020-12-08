@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chatapp.Utills.Comment;
 import com.example.chatapp.Utills.Posts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,8 +42,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Comment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseRecyclerAdapter<Posts,MyViewHolder>adapter;
     FirebaseRecyclerOptions<Posts>options;
     RecyclerView recyclerView;
-    FirebaseRecyclerOptions<Comment>commentOption;
+    FirebaseRecyclerOptions<Comment> commentOption;
     FirebaseRecyclerAdapter<Comment,CommentViewHolder>CommentAdapter;
 
 
@@ -199,6 +198,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         startActivity(intent);
                     }
                 });
+                holder.profileImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this,ImageViewActivity.class);
+                        intent.putExtra("url",model.getUserProfileImage());
+                        intent.putExtra("imageusername",model.getUsername());
+                        startActivity(intent);
+                    }
+                });
+
             }
 
             @NonNull
@@ -216,11 +225,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void LoadComments(String postKey) {
         MyViewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        commentOption = new FirebaseRecyclerOptions.Builder<Comment>().setQuery(commentRef.child(postKey),Comment.class).build();
+        commentOption = new FirebaseRecyclerOptions.Builder<Comment>().setQuery(commentRef.child(postKey), Comment.class).build();
         CommentAdapter = new FirebaseRecyclerAdapter<Comment, CommentViewHolder>(commentOption) {
             @Override
             protected void onBindViewHolder(@NonNull CommentViewHolder holder, int position, @NonNull Comment model) {
-
+               Picasso.get().load(model.getProfileImage()).into(holder.profileImage);
+               holder.username.setText(model.getUsername());
+               holder.comment.setText(model.getComment());
             }
 
             @NonNull
@@ -230,6 +241,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return new CommentViewHolder(view);
             }
         };
+        CommentAdapter.startListening();
+        MyViewHolder.recyclerView.setAdapter(CommentAdapter);
     }
 
     private void AddComments(final MyViewHolder holder, String postKey, DatabaseReference commentRef, String uid, String comment) {

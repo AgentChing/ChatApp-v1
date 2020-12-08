@@ -16,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImage"
@@ -35,8 +36,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:background="@color/colorBlack"
                 android:text="Username"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/profileImage"
@@ -47,7 +49,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:background="@color/colorBlack"
+                android:backgroundTint="@color/colorBlack"
                 android:text="TextView"
+                android:textColor="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/username"
                 app:layout_constraintTop_toBottomOf="@+id/username" />

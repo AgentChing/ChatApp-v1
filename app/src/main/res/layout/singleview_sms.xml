@@ -30,7 +30,7 @@
         android:paddingRight="8dp"
         android:paddingBottom="10dp"
         android:text="this is text 1"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

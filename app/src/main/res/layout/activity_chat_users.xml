@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatUsersActivity">
+    tools:context=".ChatUsersActivity"
+    android:background="#000000">
     <include
         android:id="@+id/app_bar"
         layout="@layout/main_appbar"

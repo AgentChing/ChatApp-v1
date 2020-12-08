@@ -35,6 +35,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:text="this is comment"
+        android:textColor="@color/colorWhite"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/usernameComment"

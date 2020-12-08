@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewFriendActivity">
+    tools:context=".ViewFriendActivity"
+    android:background="#000000">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
